@@ -1,0 +1,2 @@
+- [x] Change download resume to view resume button on homepage
+- [x] Create resume view and template with download option

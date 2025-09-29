@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card bg-white shadow-lg">
+                <!-- Header -->
+                <div class="card-header bg-primary text-white text-center py-5">
+                    <img src="/static/images/profile.jpg" class="rounded-circle mb-3" width="150" height="150" alt="Profile Picture">
+                    <h1 class="display-5 mb-0">John Doe</h1>
+                    <p class="lead mb-0">Full Stack Developer & Problem Solver</p>
+                    <div class="mt-3">
+                        <a href="/static/files/resume.pdf" download class="btn btn-light btn-lg">
+                            <i class="fas fa-download me-2"></i>Download Resume
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-5">
+                    
+                    <!-- Contact -->
+                    <section class="mb-5">
+                        <h2 class="text-primary mb-3"><i class="fas fa-address-card me-2"></i>Contact Information</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><i class="fas fa-envelope me-2 text-primary"></i><a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
+                                <p><i class="fas fa-phone me-2 text-primary"></i><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><i class="fab fa-linkedin me-2 text-primary"></i><a href="#">linkedin.com/in/johndoe</a></p>
+                                <p><i class="fab fa-github me-2 text-primary"></i><a href="#">github.com/johndoe</a></p>
+                                <p><i class="fas fa-map-marker-alt me-2 text-primary"></i>New York, NY</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Summary -->
+                    <section class="mb-5">
+                        <h2 class="text-primary mb-3"><i class="fas fa-user-tie me-2"></i>Professional Summary</h2>
+                        <p>Passionate full-stack developer with 3+ years of experience crafting digital experiences with precision. Expertise in Django, React, Node.js, and modern web technologies. Committed to delivering high-quality solutions that drive business success.</p>
+                    </section>
+
+                    <!-- Skills -->
+                    <section class="mb-5">
+                        <h2 class="text-primary mb-3"><i class="fas fa-code me-2"></i>Skills</h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Frontend</h5>
+                                <div class="progress mb-2"><div class="progress-bar bg-primary" style="width:95%">HTML/CSS</div></div>
+                                <div class="progress mb-2"><div class="progress-bar bg-success" style="width:90%">JavaScript</div></div>
+                                <div class="progress mb-2"><div class="progress-bar bg-info" style="width:85%">React</div></div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Backend</h5>
+                                <div class="progress mb-2"><div class="progress-bar bg-primary" style="width:90%">Python</div></div>
+                                <div class="progress mb-2"><div class="progress-bar bg-success" style="width:95%">Django</div></div>
+                                <div class="progress mb-2"><div class="progress-bar bg-info" style="width:80%">Node.js</div></div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Databases & Tools</h5>
+                                <div class="progress mb-2"><div class="progress-bar bg-primary" style="width:85%">PostgreSQL</div></div>
+                                <div class="progress mb-2"><div class="progress-bar bg-success" style="width:75%">MongoDB</div></div>
+                                <div class="progress mb-2"><div class="progress-bar bg-info" style="width:95%">Git</div></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Experience -->
+                    <section class="mb-5">
+                        <h2 class="text-primary mb-3"><i class="fas fa-briefcase me-2"></i>Experience</h2>
+                        <div class="timeline">
+                            <div class="mb-4">
+                                <h4>Full Stack Developer</h4>
+                                <p class="text-muted">Tech Solutions Inc., New York, NY | Jan 2021 - Present</p>
+                                <ul>
+                                    <li>Developed and maintained full-stack applications using Django and React</li>
+                                    <li>Implemented secure payment systems and user authentication</li>
+                                    <li>Optimized performance, reducing load times by 40%</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Junior Developer</h4>
+                                <p class="text-muted">StartupXYZ, New York, NY | Jun 2019 - Dec 2020</p>
+                                <ul>
+                                    <li>Built responsive web interfaces with HTML, CSS, and JavaScript</li>
+                                    <li>Integrated RESTful APIs and handled data management</li>
+                                    <li>Participated in agile development processes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Education -->
+                    <section class="mb-5">
+                        <h2 class="text-primary mb-3"><i class="fas fa-graduation-cap me-2"></i>Education</h2>
+                        <p><strong>B.Sc. in Computer Science</strong></p>
+                        <p class="text-muted">University of New York | Graduated: May 2019</p>
+                    </section>
+
+                    <!-- Projects -->
+                    <section class="mb-5">
+                        <h2 class="text-primary mb-3"><i class="fas fa-project-diagram me-2"></i>Projects</h2>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 shadow-sm project-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">E-Commerce Platform</h5>
+                                        <p>Full-featured shopping site with secure payments</p>
+                                        <small class="text-muted">Django, React, PostgreSQL</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 shadow-sm project-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Task Management App</h5>
+                                        <p>Productivity tool with real-time updates</p>
+                                        <small class="text-muted">Node.js, MongoDB, Vue.js</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 shadow-sm project-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Weather Dashboard</h5>
+                                        <p>Interactive weather app with visualizations</p>
+                                        <small class="text-muted">Python, Flask, Chart.js</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Certifications -->
+                    <section class="mb-5">
+                        <h2 class="text-primary mb-3"><i class="fas fa-certificate me-2"></i>Certifications</h2>
+                        <ul>
+                            <li>AWS Certified Developer – Associate</li>
+                            <li>Google Cloud Professional Cloud Architect</li>
+                        </ul>
+                    </section>
+
+                    <!-- Languages -->
+                    <section>
+                        <h2 class="text-primary mb-3"><i class="fas fa-language me-2"></i>Languages</h2>
+                        <ul>
+                            <li>English (Native)</li>
+                            <li>Spanish (Conversational)</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Extra CSS -->
+<style>
+    .project-card:hover {
+        transform: translateY(-5px);
+        transition: 0.3s ease-in-out;
+    }
+</style>
+{% endblock %}

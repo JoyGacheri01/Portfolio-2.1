@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-white mb-3">My Projects</h1>
+        <p class="lead text-white-50">A showcase of my work and technical expertise</p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="E-Commerce Platform" class="w-100" style="height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded">Completed</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-shopping-cart text-primary me-2"></i>E-Commerce Platform</h5>
+                    <p class="card-text">A full-featured online shopping website with user authentication, product catalog, shopping cart, and payment integration.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-1">Django</span>
+                        <span class="badge bg-success me-1">React</span>
+                        <span class="badge bg-info me-1">PostgreSQL</span>
+                        <span class="badge bg-warning">Stripe</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Task Management App" class="w-100" style="height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 bg-info text-white px-2 py-1 m-2 rounded">In Progress</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-tasks text-success me-2"></i>Task Management App</h5>
+                    <p class="card-text">A collaborative task management tool with real-time updates, team collaboration features, and progress tracking.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-warning me-1">Node.js</span>
+                        <span class="badge bg-danger me-1">MongoDB</span>
+                        <span class="badge bg-primary me-1">Vue.js</span>
+                        <span class="badge bg-secondary">Socket.io</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Weather Dashboard" class="w-100" style="height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded">Featured</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-cloud-sun text-info me-2"></i>Weather Dashboard</h5>
+                    <p class="card-text">An interactive weather application displaying current conditions, forecasts, and historical data with beautiful charts.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-1">Python</span>
+                        <span class="badge bg-warning me-1">Flask</span>
+                        <span class="badge bg-success me-1">Chart.js</span>
+                        <span class="badge bg-dark">OpenWeather API</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Blog Platform" class="w-100" style="height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 bg-primary text-white px-2 py-1 m-2 rounded">Popular</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-blog text-danger me-2"></i>Blog Platform</h5>
+                    <p class="card-text">A modern blogging platform with rich text editor, categories, comments, and SEO optimization features.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-success me-1">Django</span>
+                        <span class="badge bg-info me-1">CKEditor</span>
+                        <span class="badge bg-primary">PostgreSQL</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Social Media Analytics" class="w-100" style="height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded">Completed</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-chart-line text-warning me-2"></i>Social Media Analytics</h5>
+                    <p class="card-text">A dashboard for analyzing social media performance with data visualization and automated reporting.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-info me-1">React</span>
+                        <span class="badge bg-warning me-1">D3.js</span>
+                        <span class="badge bg-success me-1">Node.js</span>
+                        <span class="badge bg-danger">MongoDB</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Portfolio Website" class="w-100" style="height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 end-0 bg-danger text-white px-2 py-1 m-2 rounded">Personal</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-user-tie text-primary me-2"></i>Portfolio Website</h5>
+                    <p class="card-text">A responsive portfolio website showcasing projects, skills, and experience with modern design and animations.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-danger me-1">HTML</span>
+                        <span class="badge bg-primary me-1">CSS</span>
+                        <span class="badge bg-warning me-1">JavaScript</span>
+                        <span class="badge bg-info">Bootstrap</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <h3 class="text-white mb-4">Want to see more?</h3>
+        <a href="#contact" class="btn btn-warning btn-lg">
+            <i class="fas fa-envelope me-2"></i>Get In Touch
+        </a>
+    </div>
+</div>
+{% endblock %}

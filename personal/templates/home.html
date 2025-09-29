@@ -1,0 +1,397 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero-section d-flex align-items-center" style="height: 75vh; margin-top: 10vh; margin-bottom: 5rem;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-center text-lg-start">
+                <h1 class="display-4 fw-bold mb-3 text-white">Hi, I'm <span class="text-warning">John Doe</span></h1>
+                <p class="lead text-white mb-4" typed="a Full Stack Developer, a Frontend Developer, a Problem Solver">
+                I am <span class="typed-text"></span><span class="typed-cursor">|</span>
+                </p>
+                <p class="fs-5 text-white-50 mb-4">I’m a Computer Science student, developer, and problem solver who loves building digital solutions and exploring innovative ideas. With a strong foundation in web development and data analytics, I combine creativity and technical skills to craft impactful projects and entrepreneurial ventures.</p>
+                <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+                    <a href="#projects" class="btn btn-warning btn-lg"><i class="fas fa-eye me-2"></i>View My Work</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg"><i class="fas fa-envelope me-2"></i>Contact Me</a>
+                    <a href="/resume/" class="btn btn-outline-light btn-lg"><i class="fas fa-file-text me-2"></i>View My Resume</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                <img src="{% static 'images/Joy.jpg' %}" alt="John Doe" class="rounded-circle shadow-lg profile-hero" style="width:200px; height:200px; object-fit:cover; border-radius:50%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section mb-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">50+</div>
+                <p class="mb-0">Projects Completed</p>
+            </div>
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">3+</div>
+                <p class="mb-0">Years Experience</p>
+            </div>
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">100%</div>
+                <p class="mb-0">Client Satisfaction</p>
+            </div>
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">24/7</div>
+                <p class="mb-0">Support Available</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <h2 class="text-center fw-bold mb-5 text-white" id="projects">Featured Projects</h2>
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="E-Commerce Platform" class="w-100 project-img">
+                    <div class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded">Featured</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-shopping-cart text-primary me-2">Irehcag Beauty</i></h5>
+                    <p class="card-text">Irehcag’s Beauty is an online store dedicated to providing a wide range of hair and beauty products.
+                     We make beauty shopping easy, affordable, and tored to your everyday needs.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-1">Django</span>
+                        <span class="badge bg-success me-1">Python</span>
+                        <span class="badge bg-warning me-1">HTML/CSS/JS</span>
+                        <span class="badge bg-info">SQL</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Task Management App" class="w-100 project-img">
+                    <div class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded">New</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-tasks text-success me-2"></i>Task Management App</h5>
+                    <p class="card-text">Collaborative productivity tool with real-time updates, team management, and progress tracking.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-warning me-1">Node.js</span>
+                        <span class="badge bg-danger me-1">MongoDB</span>
+                        <span class="badge bg-primary">Vue.js</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 bg-white">
+                <div class="card-img-top position-relative overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200" alt="Weather Dashboard" class="w-100 project-img">
+                    <div class="position-absolute top-0 end-0 bg-info text-white px-2 py-1 m-2 rounded">Popular</div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-cloud-sun text-info me-2"></i>Weather Dashboard</h5>
+                    <p class="card-text">Interactive weather application with forecasts, historical data, and beautiful visualizations.</p>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-1">Python</span>
+                        <span class="badge bg-warning me-1">Flask</span>
+                        <span class="badge bg-success">Chart.js</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center fw-bold mb-5 text-white">Technical Skills</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card bg-white">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><i class="fas fa-code text-primary"></i> Frontend</h5>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fab fa-html5 text-danger me-1"></i>HTML/CSS</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-95" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fab fa-js-square text-warning me-1"></i>JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fab fa-react text-info me-1"></i>React</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-white">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><i class="fas fa-server text-success"></i> Backend</h5>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fab fa-python text-warning me-1"></i>Python</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fas fa-leaf text-success me-1"></i>Django</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-95" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fab fa-node-js text-success me-1"></i>Node.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card bg-white">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><i class="fas fa-database text-info"></i> Database & Tools</h5>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fas fa-database text-primary me-1"></i>PostgreSQL</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fas fa-leaf text-success me-1"></i>MongoDB</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar progress-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span><i class="fab fa-git-alt text-danger me-1"></i>Git</span>
+                            <span>95%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonials-section py-5 mb-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 text-white">What Clients Say</h2>
+            {% if testimonials %}
+            <div class="row">
+                {% for testimonial in testimonials %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 bg-white text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left fa-2x text-primary mb-3"></i>
+                        </div>
+                        <p class="card-text">{{ testimonial.quote }}</p>
+                        <div class="d-flex align-items-center justify-content-center mt-3">
+                            {% if testimonial.image %}
+                            <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="rounded-circle me-3 avatar-small">
+                            {% else %}
+                            <img src="https://via.placeholder.com/50x50" alt="{{ testimonial.name }}" class="rounded-circle me-3 avatar-small">
+                            {% endif %}
+                            <div>
+                                <h6 class="mb-0">{{ testimonial.name }}</h6>
+                                <small class="text-muted">{{ testimonial.position }}, {{ testimonial.company }}</small>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            {% for i in "12345"|make_list %}
+                                {% if forloop.counter <= testimonial.rating %}
+                                <i class="fas fa-star text-warning"></i>
+                                {% else %}
+                                <i class="far fa-star text-warning"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center text-white">
+                <p>No testimonials yet. Be the first to share your experience!</p>
+                <a href="/admin/personal/testimonial/add/" class="btn btn-primary btn-lg mt-3">
+                    <i class="fas fa-plus me-2"></i>Add Your Testimonial
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+   <div class="container py-5" id="contact">
+    <h1 class="text-center display-5 fw-bold mb-5 text-white">Let's Work Together</h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-white h-100">
+                        <div class="card-body text-center p-5">
+                            <div class="mb-4">
+                                <i class="fas fa-user-circle fa-4x text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-4">About Me</h3>
+                            <p class="card-text text-muted mb-4">I am currently a student at Jomo Kenyatta Univeristy of Agriculture and Technology (JKUAT) pursueing Bachelor of Science in Mathematics and Computer Science. I’m a tech enthusiast who loves turning big ideas into real projects.
+                            When I’m not coding, I’m probably dreaming up the next one.</p>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div class="contact-info">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <p class="mb-0 mt-2">Nairobi, Kenya</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="contact-info">
+                                        <i class="fas fa-clock"></i>
+                                        <p class="mb-0 mt-2">Available 24/7</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-white h-100">
+                        <div class="card-body p-5">
+                            <h3 class="card-title text-center mb-4">Get In Touch</h3>
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-envelope text-primary me-3 fa-lg"></i>
+                                    <div>
+                                        <strong>Email</strong><br>
+                                        <a href="mailto:gacherigatobu@gmail.com" class="text-decoration-none">gacherigatobu@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fas fa-phone text-success me-3 fa-lg"></i>
+                                    <div>
+                                        <strong>Phone</strong><br>
+                                        <a href="tel:+254785542939" class="text-decoration-none">+254785542939</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="fab fa-linkedin text-info me-3 fa-lg"></i>
+                                    <div>
+                                        <strong>LinkedIn</strong><br>
+                                        <a href="https://www.linkedin.com/in/joy-douglas-503292279/" target="_blank" class="text-decoration-none">linkedin.com/in/joy-douglas-503292279/</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fab fa-github text-dark me-3 fa-lg"></i>
+                                    <div>
+                                        <strong>GitHub</strong><br>
+                                        <a href="https://github.com/JoyGacheri01" target="_blank" class="text-decoration-none">github.com/JoyGacheri01</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-muted mb-3">Ready to start your next project?</p>
+                                <a href="mailto:john.doe@example.com" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="card bg-white">
+                <div class="card-body p-4">
+                    <h3 class="card-title text-center mb-4">Quick Stats</h3>
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-item">
+                                <i class="fas fa-project-diagram fa-2x text-primary mb-2"></i>
+                                <div class="h4 mb-0">50+</div>
+                                <small class="text-muted">Projects</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-item">
+                                <i class="fas fa-users fa-2x text-success mb-2"></i>
+                                <div class="h4 mb-0">25+</div>
+                                <small class="text-muted">Clients</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-item">
+                                <i class="fas fa-code fa-2x text-warning mb-2"></i>
+                                <div class="h4 mb-0">100K+</div>
+                                <small class="text-muted">Lines of Code</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="stat-item">
+                                <i class="fas fa-award fa-2x text-danger mb-2"></i>
+                                <div class="h4 mb-0">10+</div>
+                                <small class="text-muted">Awards</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/main.js' %}" defer></script>
+{% endblock %}
