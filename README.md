@@ -96,14 +96,4 @@ For production deployment (e.g., on Heroku, Vercel, or a VPS):
 4. Configure environment variables for secret key, database, etc.
 5. Deploy using platforms like Heroku: Follow Django deployment guides.
 
-## Contributing
 
-Feel free to fork the repository and submit pull requests for improvements.
-
-## License
-
-This project is open-source and available under the MIT License.
-
----
-
-Built with ❤️ using Django. Last updated: 2025

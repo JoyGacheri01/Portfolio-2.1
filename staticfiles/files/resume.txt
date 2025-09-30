@@ -1,0 +1,60 @@
+John Doe
+Full Stack Developer & Problem Solver
+
+Contact Information:
+Email: john.doe@example.com
+Phone: +1 (555) 123-4567
+LinkedIn: linkedin.com/in/johndoe
+GitHub: github.com/johndoe
+Location: New York, NY
+
+Professional Summary:
+Passionate full-stack developer with 3+ years of experience crafting digital experiences with precision. Expertise in Django, React, Node.js, and modern web technologies. Committed to delivering high-quality solutions that drive business success.
+
+Skills:
+- Frontend: HTML/CSS (95%), JavaScript (90%), React (85%)
+- Backend: Python (90%), Django (95%), Node.js (80%)
+- Databases: PostgreSQL (85%), MongoDB (75%)
+- Tools: Git (95%), Docker, AWS
+
+Experience:
+Full Stack Developer
+Tech Solutions Inc., New York, NY
+January 2021 - Present
+- Developed and maintained full-stack web applications using Django and React
+- Implemented secure payment systems and user authentication
+- Collaborated with cross-functional teams to deliver projects on time
+- Optimized application performance, reducing load times by 40%
+
+Junior Developer
+StartupXYZ, New York, NY
+June 2019 - December 2020
+- Built responsive web interfaces with HTML, CSS, and JavaScript
+- Integrated RESTful APIs and handled data management
+- Participated in code reviews and agile development processes
+
+Education:
+Bachelor of Science in Computer Science
+University of New York, NY
+Graduated: May 2019
+
+Projects:
+E-Commerce Platform
+- Full-featured online shopping website with secure payments
+- Technologies: Django, React, PostgreSQL
+
+Task Management App
+- Collaborative productivity tool with real-time updates
+- Technologies: Node.js, MongoDB, Vue.js
+
+Weather Dashboard
+- Interactive weather application with visualizations
+- Technologies: Python, Flask, Chart.js
+
+Certifications:
+- AWS Certified Developer - Associate
+- Google Cloud Professional Cloud Architect
+
+Languages:
+- English (Native)
+- Spanish (Conversational)
