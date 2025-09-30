@@ -1,0 +1,5 @@
+- [x] Add toggle button HTML in base.html sidebar
+- [x] Add CSS for compressed sidebar state in base.html
+- [x] Add media queries for responsive behavior
+- [x] Add JavaScript in main.js for toggle functionality
+- [x] Test the collapsible sidebar

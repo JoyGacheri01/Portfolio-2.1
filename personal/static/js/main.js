@@ -31,4 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     type();
   });
+
+  // Sidebar toggle functionality
+  const sidebarToggleBtn = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const contentWrapper = document.querySelector('.content-wrapper');
+
+  sidebarToggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('compressed');
+    contentWrapper.classList.toggle('compressed');
+  });
 });
