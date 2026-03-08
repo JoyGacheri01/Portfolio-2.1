@@ -1,386 +1,631 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Home — Joy Gacheri{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
-{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Home — Joy
+Gacheri{% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+{% endblock %} {% block content %}
 
 <!-- Hero -->
-<section class="hero-section d-flex align-items-center" style="min-height:70vh; margin-top:5vh; margin-bottom:3rem;">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 text-center text-lg-start">
-                <h1 class="display-4 fw-bold mb-3 text-white">
-                    Hi, I'm <span class="text-warning">JOY GACHERI</span>
-                </h1>
-                <p class="lead text-white mb-4"
-                   data-typed="a Full Stack Developer,a Frontend Developer,a Problem Solver">
-                    I am <span class="typed-text"></span><span class="typed-cursor">|</span>
-                </p>
-                <p class="fs-5 text-white-50 mb-4">
-                    {% if about %}{{ about.bio }}{% else %}
-                    I'm a Mathematics and Computer Science student, developer, and problem solver who loves
-                    building digital solutions and exploring innovative ideas.
-                    {% endif %}
-                </p>
-                <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-                    <a href="{% url 'projects' %}" class="btn btn-warning btn-lg">
-                        <i class="fas fa-eye me-2"></i>View My Work
-                    </a>
-                    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-envelope me-2"></i>Contact Me
-                    </a>
-                    {% if about and about.resume %}
-                    <a href="{{ about.resume.url }}" class="btn btn-outline-light btn-lg" target="_blank">
-                        <i class="fas fa-file-alt me-2"></i>View Resume
-                    </a>
-                    {% else %}
-                    <a href="/resume/" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-file-alt me-2"></i>View Resume
-                    </a>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="col-lg-6 text-center mt-4 mt-lg-0">
-                {% if about and about.profile_image %}
-                <img src="{{ about.profile_image.url }}" alt="{{ about.name }}"
-                     class="rounded-circle shadow-lg"
-                     style="width:220px;height:220px;object-fit:cover;border:4px solid rgba(255,255,255,0.3);">
-                {% else %}
-                <img src="{% static 'images/Joy.jpg' %}" alt="Joy Gacheri"
-                     class="rounded-circle shadow-lg"
-                     style="width:220px;height:220px;object-fit:cover;border:4px solid rgba(255,255,255,0.3);">
-                {% endif %}
-            </div>
+<section
+  class="hero-section d-flex align-items-center"
+  style="min-height: 70vh; margin-top: 5vh; margin-bottom: 3rem"
+>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="display-4 fw-bold mb-3 text-white">
+          Hi, I'm <span class="text-warning">JOY GACHERI</span>
+        </h1>
+        <p
+          class="lead text-white mb-4"
+          data-typed="a Full Stack Developer,a Frontend Developer,a Problem Solver"
+        >
+          I am <span class="typed-text"></span
+          ><span class="typed-cursor">|</span>
+        </p>
+        <p class="fs-5 text-white-50 mb-4">
+          {% if about %}{{ about.bio }}{% else %} I'm a Mathematics and Computer
+          Science student, developer, and problem solver who loves building
+          digital solutions and exploring innovative ideas. {% endif %}
+        </p>
+        <div
+          class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3"
+        >
+          <a href="{% url 'projects' %}" class="btn btn-warning btn-lg">
+            <i class="fas fa-eye me-2"></i>View My Work
+          </a>
+          <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-envelope me-2"></i>Contact Me
+          </a>
+          {% if about and about.resume %}
+          <a
+            href="{{ about.resume.url }}"
+            class="btn btn-outline-light btn-lg"
+            target="_blank"
+          >
+            <i class="fas fa-file-alt me-2"></i>View Resume
+          </a>
+          {% else %}
+          <a href="/resume/" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-file-alt me-2"></i>View Resume
+          </a>
+          {% endif %}
         </div>
+      </div>
+      <div class="col-lg-6 text-center mt-4 mt-lg-0">
+        {% if about and about.profile_image %}
+        <img
+          src="{{ about.profile_image.url }}"
+          alt="{{ about.name }}"
+          class="rounded-circle shadow-lg"
+          style="
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+          "
+        />
+        {% else %}
+        <img
+          src="{% static 'images/Joy.jpg' %}"
+          alt="Joy Gacheri"
+          class="rounded-circle shadow-lg"
+          style="
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+          "
+        />
+        {% endif %}
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Stats -->
 <section class="stats-section mb-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-3 stat-item"><div class="stat-number">50+</div><p class="mb-0">Projects Completed</p></div>
-            <div class="col-md-3 stat-item"><div class="stat-number">3+</div><p class="mb-0">Years Experience</p></div>
-            <div class="col-md-3 stat-item"><div class="stat-number">100%</div><p class="mb-0">Client Satisfaction</p></div>
-            <div class="col-md-3 stat-item"><div class="stat-number">24/7</div><p class="mb-0">Support Available</p></div>
-        </div>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3 stat-item">
+        <div class="stat-number">50+</div>
+        <p class="mb-0">Projects Completed</p>
+      </div>
+      <div class="col-md-3 stat-item">
+        <div class="stat-number">3+</div>
+        <p class="mb-0">Years Experience</p>
+      </div>
+      <div class="col-md-3 stat-item">
+        <div class="stat-number">100%</div>
+        <p class="mb-0">Client Satisfaction</p>
+      </div>
+      <div class="col-md-3 stat-item">
+        <div class="stat-number">24/7</div>
+        <p class="mb-0">Support Available</p>
+      </div>
     </div>
+  </div>
 </section>
 
 <div class="container">
-
-    <!-- Featured Projects -->
-    <h2 class="text-center fw-bold mb-5 text-white" id="projects">Featured Projects</h2>
-    <div class="row mb-5">
-        {% if featured_projects %}
-            {% for project in featured_projects %}
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 bg-white">
-                    <div class="card-img-top position-relative overflow-hidden">
-                        {% if project.image %}
-                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-100 project-img" style="height:200px;object-fit:cover;">
-                        {% else %}
-                            <img src="https://via.placeholder.com/300x200" alt="{{ project.title }}" class="w-100 project-img" style="height:200px;object-fit:cover;">
-                        {% endif %}
-                        <div class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded">Featured</div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ project.title }}</h5>
-                        <p class="card-text flex-grow-1">{{ project.description }}</p>
-                        <div class="mb-3">
-                            {% for tech in project.get_technologies_list %}
-                            <span class="badge bg-primary me-1 mb-1">{{ tech }}</span>
-                            {% endfor %}
-                        </div>
-                        <div class="d-flex justify-content-between mt-auto">
-                            {% if project.url %}
-                            <a href="{{ project.url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                                <i class="fas fa-external-link-alt me-1"></i>Live Demo
-                            </a>
-                            {% endif %}
-                            {% if project.github_url %}
-                            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">
-                                <i class="fab fa-github me-1"></i>Code
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Featured Projects -->
+  <h2 class="text-center fw-bold mb-5 text-white" id="projects">
+    Featured Projects
+  </h2>
+  <div class="row mb-5">
+    {% if featured_projects %} {% for project in featured_projects %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 bg-white">
+        <div class="card-img-top position-relative overflow-hidden">
+          {% if project.image %}
+          <img
+            src="{{ project.image.url }}"
+            alt="{{ project.title }}"
+            class="w-100 project-img"
+            style="height: 200px; object-fit: cover"
+          />
+          {% else %}
+          <img
+            src="https://via.placeholder.com/300x200"
+            alt="{{ project.title }}"
+            class="w-100 project-img"
+            style="height: 200px; object-fit: cover"
+          />
+          {% endif %}
+          <div
+            class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded"
+          >
+            Featured
+          </div>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text flex-grow-1">{{ project.description }}</p>
+          <div class="mb-3">
+            {% for tech in project.get_technologies_list %}
+            <span class="badge bg-primary me-1 mb-1">{{ tech }}</span>
             {% endfor %}
-        {% else %}
-        <!-- Static fallback projects -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 bg-white">
-                <div class="card-img-top position-relative overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200" alt="Irehcag Beauty" class="w-100 project-img" style="height:200px;object-fit:cover;">
-                    <div class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded">Featured</div>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title"><i class="fas fa-shopping-bag text-primary me-2"></i>Irehcag Beauty</h5>
-                    <p class="card-text flex-grow-1">An online store for hair and beauty products making shopping easy and affordable.</p>
-                    <div class="mb-3">
-                        <span class="badge bg-primary me-1">Django</span>
-                        <span class="badge bg-success me-1">Python</span>
-                        <span class="badge bg-warning me-1">HTML/CSS/JS</span>
-                        <span class="badge bg-info">SQL</span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-auto">
-                        <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="d-flex justify-content-between mt-auto">
+            {% if project.url %}
+            <a
+              href="{{ project.url }}"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary btn-sm"
+            >
+              <i class="fas fa-external-link-alt me-1"></i>Live Demo
+            </a>
+            {% endif %} {% if project.github_url %}
+            <a
+              href="{{ project.github_url }}"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline-secondary btn-sm"
+            >
+              <i class="fab fa-github me-1"></i>Code
+            </a>
+            {% endif %}
+          </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 bg-white">
-                <div class="card-img-top position-relative overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200" alt="Task Management" class="w-100 project-img" style="height:200px;object-fit:cover;">
-                    <div class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded">New</div>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title"><i class="fas fa-tasks text-success me-2"></i>Task Management App</h5>
-                    <p class="card-text flex-grow-1">Collaborative productivity tool with real-time updates and progress tracking.</p>
-                    <div class="mb-3">
-                        <span class="badge bg-warning me-1">Node.js</span>
-                        <span class="badge bg-danger me-1">MongoDB</span>
-                        <span class="badge bg-primary">Vue.js</span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-auto">
-                        <a href="#" class="btn btn-success btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <!-- Static fallback projects -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 bg-white">
+        <div class="card-img-top position-relative overflow-hidden">
+          <img
+            src="https://via.placeholder.com/300x200"
+            alt="Irehcag Beauty"
+            class="w-100 project-img"
+            style="height: 200px; object-fit: cover"
+          />
+          <div
+            class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded"
+          >
+            Featured
+          </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 bg-white">
-                <div class="card-img-top position-relative overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200" alt="Weather Dashboard" class="w-100 project-img" style="height:200px;object-fit:cover;">
-                    <div class="position-absolute top-0 end-0 bg-info text-white px-2 py-1 m-2 rounded">Popular</div>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title"><i class="fas fa-cloud-sun text-info me-2"></i>Weather Dashboard</h5>
-                    <p class="card-text flex-grow-1">Interactive weather app with forecasts, historical data, and beautiful visualisations.</p>
-                    <div class="mb-3">
-                        <span class="badge bg-primary me-1">Python</span>
-                        <span class="badge bg-warning me-1">Flask</span>
-                        <span class="badge bg-success">Chart.js</span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-auto">
-                        <a href="#" class="btn btn-info btn-sm"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
-                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="fab fa-github me-1"></i>Code</a>
-                    </div>
-                </div>
-            </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">
+            <i class="fas fa-shopping-bag text-primary me-2"></i>Irehcag Beauty
+          </h5>
+          <p class="card-text flex-grow-1">
+            An online store for hair and beauty products making shopping easy
+            and affordable.
+          </p>
+          <div class="mb-3">
+            <span class="badge bg-primary me-1">Django</span>
+            <span class="badge bg-success me-1">Python</span>
+            <span class="badge bg-warning me-1">HTML/CSS/JS</span>
+            <span class="badge bg-info">SQL</span>
+          </div>
+          <div class="d-flex justify-content-between mt-auto">
+            <a href="#" class="btn btn-primary btn-sm"
+              ><i class="fas fa-external-link-alt me-1"></i>Live Demo</a
+            >
+            <a href="#" class="btn btn-outline-secondary btn-sm"
+              ><i class="fab fa-github me-1"></i>Code</a
+            >
+          </div>
         </div>
-        {% endif %}
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 bg-white">
+        <div class="card-img-top position-relative overflow-hidden">
+          <img
+            src="https://via.placeholder.com/300x200"
+            alt="Task Management"
+            class="w-100 project-img"
+            style="height: 200px; object-fit: cover"
+          />
+          <div
+            class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded"
+          >
+            New
+          </div>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">
+            <i class="fas fa-tasks text-success me-2"></i>Task Management App
+          </h5>
+          <p class="card-text flex-grow-1">
+            Collaborative productivity tool with real-time updates and progress
+            tracking.
+          </p>
+          <div class="mb-3">
+            <span class="badge bg-warning me-1">Node.js</span>
+            <span class="badge bg-danger me-1">MongoDB</span>
+            <span class="badge bg-primary">Vue.js</span>
+          </div>
+          <div class="d-flex justify-content-between mt-auto">
+            <a href="#" class="btn btn-success btn-sm"
+              ><i class="fas fa-external-link-alt me-1"></i>Live Demo</a
+            >
+            <a href="#" class="btn btn-outline-secondary btn-sm"
+              ><i class="fab fa-github me-1"></i>Code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 bg-white">
+        <div class="card-img-top position-relative overflow-hidden">
+          <img
+            src="https://via.placeholder.com/300x200"
+            alt="Weather Dashboard"
+            class="w-100 project-img"
+            style="height: 200px; object-fit: cover"
+          />
+          <div
+            class="position-absolute top-0 end-0 bg-info text-white px-2 py-1 m-2 rounded"
+          >
+            Popular
+          </div>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">
+            <i class="fas fa-cloud-sun text-info me-2"></i>Weather Dashboard
+          </h5>
+          <p class="card-text flex-grow-1">
+            Interactive weather app with forecasts, historical data, and
+            beautiful visualisations.
+          </p>
+          <div class="mb-3">
+            <span class="badge bg-primary me-1">Python</span>
+            <span class="badge bg-warning me-1">Flask</span>
+            <span class="badge bg-success">Chart.js</span>
+          </div>
+          <div class="d-flex justify-content-between mt-auto">
+            <a href="#" class="btn btn-info btn-sm"
+              ><i class="fas fa-external-link-alt me-1"></i>Live Demo</a
+            >
+            <a href="#" class="btn btn-outline-secondary btn-sm"
+              ><i class="fab fa-github me-1"></i>Code</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Technical Skills -->
+  <h2 class="text-center fw-bold mb-5 text-white">Technical Skills</h2>
+  <div class="row mb-5">
+    <!-- Frontend -->
+    <div class="col-md-4 mb-4">
+      <div class="card bg-white h-100">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <i class="fas fa-code text-primary"></i> Frontend
+          </h5>
+          {% if frontend_skills %} {% for skill in frontend_skills %}
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>
+                {% endif %}{{ skill.name }}</span>
+              <span>{{ skill.proficiency }}%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width:{{ skill.proficiency }}%"
+                aria-valuenow="{{ skill.proficiency }}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          {% endfor %} 
+
+          <!-- Static fallback -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span><i class="fab fa-html5 text-danger me-1"></i>HTML/CSS</span
+              ><span>95%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 95%"
+                role="progressbar"
+                aria-valuenow="95"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span
+                ><i class="fab fa-js-square text-warning me-1"></i
+                >JavaScript</span
+              ><span>90%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 90%"
+                role="progressbar"
+                aria-valuenow="90"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span><i class="fab fa-react text-info me-1"></i>React</span
+              ><span>85%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 85%"
+                role="progressbar"
+                aria-valuenow="85"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
     </div>
 
-    <!-- Technical Skills -->
-    <h2 class="text-center fw-bold mb-5 text-white">Technical Skills</h2>
-    <div class="row mb-5">
-
-        <!-- Frontend -->
-        <div class="col-md-4 mb-4">
-            <div class="card bg-white h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><i class="fas fa-code text-primary"></i> Frontend</h5>
-                    {% if frontend_skills %}
-                        {% for skill in frontend_skills %}
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>{% endif %}{{ skill.name }}</span>
-                                <span>{{ skill.proficiency }}%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar"
-                                     style="width:{{ skill.proficiency }}%"
-                                     aria-valuenow="{{ skill.proficiency }}"
-                                     aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        {% for item in "HTML/CSS,95,fab fa-html5 text-danger|JavaScript,90,fab fa-js-square text-warning|React,85,fab fa-react text-info"|split:"|" %}
-                        {% endfor %}
-                        <!-- Static fallback -->
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fab fa-html5 text-danger me-1"></i>HTML/CSS</span><span>95%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fab fa-js-square text-warning me-1"></i>JavaScript</span><span>90%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fab fa-react text-info me-1"></i>React</span><span>85%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                    {% endif %}
-                </div>
+    <!-- Backend -->
+    <div class="col-md-4 mb-4">
+      <div class="card bg-white h-100">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <i class="fas fa-server text-success"></i> Backend
+          </h5>
+          {% if backend_skills %} {% for skill in backend_skills %}
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span
+                >{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>
+                {% endif %}{{ skill.name }}</span
+              >
+              <span>{{ skill.proficiency }}%</span>
             </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="col-md-4 mb-4">
-            <div class="card bg-white h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><i class="fas fa-server text-success"></i> Backend</h5>
-                    {% if backend_skills %}
-                        {% for skill in backend_skills %}
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>{% endif %}{{ skill.name }}</span>
-                                <span>{{ skill.proficiency }}%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar"
-                                     style="width:{{ skill.proficiency }}%"
-                                     aria-valuenow="{{ skill.proficiency }}"
-                                     aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fab fa-python text-warning me-1"></i>Python</span><span>90%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fas fa-leaf text-success me-1"></i>Django</span><span>95%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fab fa-node-js text-success me-1"></i>Node.js</span><span>80%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                    {% endif %}
-                </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width:{{ skill.proficiency }}%"
+                aria-valuenow="{{ skill.proficiency }}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
             </div>
-        </div>
-
-        <!-- Tools -->
-        <div class="col-md-4 mb-4">
-            <div class="card bg-white h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><i class="fas fa-database text-info"></i> Database & Tools</h5>
-                    {% if tool_skills %}
-                        {% for skill in tool_skills %}
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>{% endif %}{{ skill.name }}</span>
-                                <span>{{ skill.proficiency }}%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar"
-                                     style="width:{{ skill.proficiency }}%"
-                                     aria-valuenow="{{ skill.proficiency }}"
-                                     aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fas fa-database text-primary me-1"></i>PostgreSQL</span><span>85%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fas fa-leaf text-success me-1"></i>MongoDB</span><span>75%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-1"><span><i class="fab fa-git-alt text-danger me-1"></i>Git</span><span>95%</span></div>
-                            <div class="progress"><div class="progress-bar" style="width:95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div></div>
-                        </div>
-                    {% endif %}
-                </div>
+          </div>
+          {% endfor %} {% else %}
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span><i class="fab fa-python text-warning me-1"></i>Python</span
+              ><span>90%</span>
             </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 90%"
+                role="progressbar"
+                aria-valuenow="90"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span><i class="fas fa-leaf text-success me-1"></i>Django</span
+              ><span>95%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 95%"
+                role="progressbar"
+                aria-valuenow="95"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span
+                ><i class="fab fa-node-js text-success me-1"></i>Node.js</span
+              ><span>80%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 80%"
+                role="progressbar"
+                aria-valuenow="80"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          {% endif %}
         </div>
+      </div>
     </div>
 
-    <!-- Testimonials -->
-    <section class="testimonials-section py-5 mb-5">
-        <h2 class="text-center fw-bold mb-5 text-white">What Clients Say</h2>
-        {% if testimonials %}
-        <div class="row">
-            {% for testimonial in testimonials %}
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 bg-white text-center p-4">
-                    <div class="mb-3">
-                        <i class="fas fa-quote-left fa-2x text-primary"></i>
-                    </div>
-                    <p class="card-text fst-italic">"{{ testimonial.quote }}"</p>
-                    <div class="d-flex align-items-center justify-content-center mt-3">
-                        {% if testimonial.image %}
-                        <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}"
-                             class="rounded-circle me-3" style="width:50px;height:50px;object-fit:cover;">
-                        {% else %}
-                        <div class="rounded-circle me-3 bg-primary d-flex align-items-center justify-content-center text-white fw-bold"
-                             style="width:50px;height:50px;flex-shrink:0;">
-                            {{ testimonial.name|first|upper }}
-                        </div>
-                        {% endif %}
-                        <div class="text-start">
-                            <h6 class="mb-0">{{ testimonial.name }}</h6>
-                            <small class="text-muted">{{ testimonial.position }}, {{ testimonial.company }}</small>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        {% for i in "12345"|make_list %}
-                            {% if forloop.counter <= testimonial.rating %}
-                            <i class="fas fa-star text-warning"></i>
-                            {% else %}
-                            <i class="far fa-star text-warning"></i>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
+    <!-- Tools -->
+    <div class="col-md-4 mb-4">
+      <div class="card bg-white h-100">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <i class="fas fa-database text-info"></i> Database & Tools
+          </h5>
+          {% if tool_skills %} {% for skill in tool_skills %}
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span
+                >{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>
+                {% endif %}{{ skill.name }}</span
+              >
+              <span>{{ skill.proficiency }}%</span>
             </div>
-            {% endfor %}
-        </div>
-        {% else %}
-        <div class="text-center text-white">
-            <p>No testimonials yet.</p>
-        </div>
-        {% endif %}
-    </section>
-
-    <!-- Contact CTA -->
-    <div class="container py-5" id="contact">
-        <h2 class="text-center display-5 fw-bold mb-5 text-white">Let's Work Together</h2>
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <div class="card bg-white">
-                    <div class="card-body p-5">
-                        <i class="fas fa-handshake fa-4x text-primary mb-4"></i>
-                        <h4 class="mb-3">Ready to start your next project?</h4>
-                        <p class="text-muted mb-4">
-                            I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
-                        </p>
-                        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg me-3">
-                            <i class="fas fa-paper-plane me-2"></i>Send a Message
-                        </a>
-                        <a href="mailto:gacherigatobu@gmail.com" class="btn btn-outline-secondary btn-lg">
-                            <i class="fas fa-envelope me-2"></i>Email Directly
-                        </a>
-                    </div>
-                </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width:{{ skill.proficiency }}%"
+                aria-valuenow="{{ skill.proficiency }}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
             </div>
+          </div>
+          {% endfor %} {% else %}
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span
+                ><i class="fas fa-database text-primary me-1"></i
+                >PostgreSQL</span
+              ><span>85%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 85%"
+                role="progressbar"
+                aria-valuenow="85"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span><i class="fas fa-leaf text-success me-1"></i>MongoDB</span
+              ><span>75%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 75%"
+                role="progressbar"
+                aria-valuenow="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span><i class="fab fa-git-alt text-danger me-1"></i>Git</span
+              ><span>95%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width: 95%"
+                role="progressbar"
+                aria-valuenow="95"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </div>
+          {% endif %}
         </div>
+      </div>
     </div>
+  </div>
 
+  <!-- Testimonials -->
+  <section class="testimonials-section py-5 mb-5">
+    <h2 class="text-center fw-bold mb-5 text-white">What Clients Say</h2>
+    {% if testimonials %}
+    <div class="row">
+      {% for testimonial in testimonials %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 bg-white text-center p-4">
+          <div class="mb-3">
+            <i class="fas fa-quote-left fa-2x text-primary"></i>
+          </div>
+          <p class="card-text fst-italic">"{{ testimonial.quote }}"</p>
+          <div class="d-flex align-items-center justify-content-center mt-3">
+            {% if testimonial.image %}
+            <img
+              src="{{ testimonial.image.url }}"
+              alt="{{ testimonial.name }}"
+              class="rounded-circle me-3"
+              style="width: 50px; height: 50px; object-fit: cover"
+            />
+            {% else %}
+            <div
+              class="rounded-circle me-3 bg-primary d-flex align-items-center justify-content-center text-white fw-bold"
+              style="width: 50px; height: 50px; flex-shrink: 0"
+            >
+              {{ testimonial.name|first|upper }}
+            </div>
+            {% endif %}
+            <div class="text-start">
+              <h6 class="mb-0">{{ testimonial.name }}</h6>
+              <small class="text-muted"
+                >{{ testimonial.position }}, {{ testimonial.company }}</small
+              >
+            </div>
+          </div>
+          <div class="mt-3">
+            {% for i in "12345"|make_list %} {% if forloop.counter <= testimonial.rating %}
+            <i class="fas fa-star text-warning"></i>
+            {% else %}
+            <i class="far fa-star text-warning"></i>
+            {% endif %} {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center text-white">
+      <p>No testimonials yet.</p>
+    </div>
+    {% endif %}
+  </section>
+
+  <!-- Contact CTA -->
+  <div class="container py-5" id="contact">
+    <h2 class="text-center display-5 fw-bold mb-5 text-white">
+      Let's Work Together
+    </h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <div class="card bg-white">
+          <div class="card-body p-5">
+            <i class="fas fa-handshake fa-4x text-primary mb-4"></i>
+            <h4 class="mb-3">Ready to start your next project?</h4>
+            <p class="text-muted mb-4">
+              I'm always open to discussing new projects, creative ideas or
+              opportunities to be part of your vision.
+            </p>
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg me-3">
+              <i class="fas fa-paper-plane me-2"></i>Send a Message
+            </a>
+            <a
+              href="mailto:gacherigatobu@gmail.com"
+              class="btn btn-outline-secondary btn-lg"
+            >
+              <i class="fas fa-envelope me-2"></i>Email Directly
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-{% endblock %}
-
-{% block extra_js %}
+{% endblock %} {% block extra_js %}
 <script src="{% static 'js/main.js' %}" defer></script>
 {% endblock %}
