@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import Testimonial, Project, Skill, About, Contact
 
 
@@ -43,6 +45,19 @@ def contact(request):
                 subject=subject,
                 message=message,
             )
+            # Send email notification if configured
+            if hasattr(settings, 'EMAIL_HOST_USER') and settings.EMAIL_HOST_USER:
+                try:
+                    send_mail(
+                        subject=f"[Portfolio] {subject}",
+                        message=f"From: {name} <{email}>\n\n{message}",
+                        from_email=settings.EMAIL_HOST_USER,
+                        recipient_list=[settings.EMAIL_HOST_USER],
+                        fail_silently=True,
+                    )
+                except Exception:
+                    pass
+
             messages.success(request, "Thanks for reaching out! I'll get back to you soon.")
             return redirect('contact')
         else:

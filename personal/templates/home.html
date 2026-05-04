@@ -1,631 +1,299 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Home — Joy
-Gacheri{% endblock %} {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}" />
-{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Joy Gacheri — Full Stack Developer{% endblock %}
+{% block nav_home %}active{% endblock %}
 
-<!-- Hero -->
-<section
-  class="hero-section d-flex align-items-center"
-  style="min-height: 70vh; margin-top: 5vh; margin-bottom: 3rem"
->
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 text-center text-lg-start">
-        <h1 class="display-4 fw-bold mb-3 text-white">
-          Hi, I'm <span class="text-warning">JOY GACHERI</span>
-        </h1>
-        <p
-          class="lead text-white mb-4"
-          data-typed="a Full Stack Developer,a Frontend Developer,a Problem Solver"
-        >
-          I am <span class="typed-text"></span
-          ><span class="typed-cursor">|</span>
-        </p>
-        <p class="fs-5 text-white-50 mb-4">
-          {% if about %}{{ about.bio }}{% else %} I'm a Mathematics and Computer
-          Science student, developer, and problem solver who loves building
-          digital solutions and exploring innovative ideas. {% endif %}
-        </p>
-        <div
-          class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3"
-        >
-          <a href="{% url 'projects' %}" class="btn btn-warning btn-lg">
-            <i class="fas fa-eye me-2"></i>View My Work
-          </a>
-          <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
-            <i class="fas fa-envelope me-2"></i>Contact Me
-          </a>
-          {% if about and about.resume %}
-          <a
-            href="{{ about.resume.url }}"
-            class="btn btn-outline-light btn-lg"
-            target="_blank"
-          >
-            <i class="fas fa-file-alt me-2"></i>View Resume
-          </a>
-          {% else %}
-          <a href="/resume/" class="btn btn-outline-light btn-lg">
-            <i class="fas fa-file-alt me-2"></i>View Resume
-          </a>
-          {% endif %}
-        </div>
-      </div>
-      <div class="col-lg-6 text-center mt-4 mt-lg-0">
-        {% if about and about.profile_image %}
-        <img
-          src="{{ about.profile_image.url }}"
-          alt="{{ about.name }}"
-          class="rounded-circle shadow-lg"
-          style="
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-          "
-        />
-        {% else %}
-        <img
-          src="{% static 'images/Joy.jpg' %}"
-          alt="Joy Gacheri"
-          class="rounded-circle shadow-lg"
-          style="
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-          "
-        />
-        {% endif %}
-      </div>
-    </div>
-  </div>
-</section>
+{% block content %}
+<div class="page-wrap">
 
-<!-- Stats -->
-<section class="stats-section mb-5">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-3 stat-item">
-        <div class="stat-number">50+</div>
-        <p class="mb-0">Projects Completed</p>
-      </div>
-      <div class="col-md-3 stat-item">
-        <div class="stat-number">3+</div>
-        <p class="mb-0">Years Experience</p>
-      </div>
-      <div class="col-md-3 stat-item">
-        <div class="stat-number">100%</div>
-        <p class="mb-0">Client Satisfaction</p>
-      </div>
-      <div class="col-md-3 stat-item">
-        <div class="stat-number">24/7</div>
-        <p class="mb-0">Support Available</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-  <!-- Featured Projects -->
-  <h2 class="text-center fw-bold mb-5 text-white" id="projects">
-    Featured Projects
-  </h2>
-  <div class="row mb-5">
-    {% if featured_projects %} {% for project in featured_projects %}
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 bg-white">
-        <div class="card-img-top position-relative overflow-hidden">
-          {% if project.image %}
-          <img
-            src="{{ project.image.url }}"
-            alt="{{ project.title }}"
-            class="w-100 project-img"
-            style="height: 200px; object-fit: cover"
-          />
-          {% else %}
-          <img
-            src="https://via.placeholder.com/300x200"
-            alt="{{ project.title }}"
-            class="w-100 project-img"
-            style="height: 200px; object-fit: cover"
-          />
-          {% endif %}
-          <div
-            class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded"
-          >
-            Featured
-          </div>
-        </div>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ project.title }}</h5>
-          <p class="card-text flex-grow-1">{{ project.description }}</p>
-          <div class="mb-3">
-            {% for tech in project.get_technologies_list %}
-            <span class="badge bg-primary me-1 mb-1">{{ tech }}</span>
-            {% endfor %}
-          </div>
-          <div class="d-flex justify-content-between mt-auto">
-            {% if project.url %}
-            <a
-              href="{{ project.url }}"
-              target="_blank"
-              rel="noopener"
-              class="btn btn-primary btn-sm"
-            >
-              <i class="fas fa-external-link-alt me-1"></i>Live Demo
-            </a>
-            {% endif %} {% if project.github_url %}
-            <a
-              href="{{ project.github_url }}"
-              target="_blank"
-              rel="noopener"
-              class="btn btn-outline-secondary btn-sm"
-            >
-              <i class="fab fa-github me-1"></i>Code
-            </a>
-            {% endif %}
-          </div>
-        </div>
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <section style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;padding:4rem 0 3rem;min-height:70vh">
+    <div>
+      <p class="section-label">Available for work</p>
+      <h1 style="font-family:var(--font-head);font-size:clamp(2.4rem,6vw,3.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1.08;margin-bottom:1.2rem">
+        Hi, I'm<br>
+        <span style="color:var(--teal)">Joy Gacheri</span>
+      </h1>
+      <p style="font-size:1.15rem;color:var(--soft);margin-bottom:0.5rem;min-height:1.8rem">
+        I'm a <span class="typed-text" style="color:var(--amber);font-weight:500"></span><span style="color:var(--amber);animation:blink 1s infinite">|</span>
+      </p>
+      <p style="color:var(--muted);font-size:0.95rem;max-width:480px;line-height:1.7;margin-bottom:2rem">
+        {% if about %}{{ about.bio }}{% else %}Mathematics & Computer Science student at JKUAT, building elegant digital solutions from Nairobi.{% endif %}
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem">
+        <a href="{% url 'projects' %}" class="btn-teal"><i class="fas fa-layer-group"></i>View Work</a>
+        <a href="{% url 'contact' %}" class="btn-ghost"><i class="fas fa-paper-plane"></i>Contact Me</a>
+        <a href="{% url 'resume' %}" class="btn-ghost"><i class="fas fa-file-alt"></i>Resume</a>
       </div>
     </div>
-    {% endfor %} {% else %}
-    <!-- Static fallback projects -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 bg-white">
-        <div class="card-img-top position-relative overflow-hidden">
-          <img
-            src="https://via.placeholder.com/300x200"
-            alt="Irehcag Beauty"
-            class="w-100 project-img"
-            style="height: 200px; object-fit: cover"
-          />
-          <div
-            class="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded"
-          >
-            Featured
-          </div>
-        </div>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">
-            <i class="fas fa-shopping-bag text-primary me-2"></i>Irehcag Beauty
-          </h5>
-          <p class="card-text flex-grow-1">
-            An online store for hair and beauty products making shopping easy
-            and affordable.
-          </p>
-          <div class="mb-3">
-            <span class="badge bg-primary me-1">Django</span>
-            <span class="badge bg-success me-1">Python</span>
-            <span class="badge bg-warning me-1">HTML/CSS/JS</span>
-            <span class="badge bg-info">SQL</span>
-          </div>
-          <div class="d-flex justify-content-between mt-auto">
-            <a href="#" class="btn btn-primary btn-sm"
-              ><i class="fas fa-external-link-alt me-1"></i>Live Demo</a
-            >
-            <a href="#" class="btn btn-outline-secondary btn-sm"
-              ><i class="fab fa-github me-1"></i>Code</a
-            >
-          </div>
-        </div>
-      </div>
+    <div style="flex-shrink:0;text-align:center">
+      {% if about and about.profile_image %}
+      <img src="{{ about.profile_image.url }}" alt="{{ about.name }}"
+           style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--teal);box-shadow:0 0 40px rgba(0,201,167,0.2)">
+      {% else %}
+      <img src="{% static 'images/Joy.jpg' %}" alt="Joy Gacheri"
+           style="width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--teal);box-shadow:0 0 40px rgba(0,201,167,0.2)">
+      {% endif %}
     </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 bg-white">
-        <div class="card-img-top position-relative overflow-hidden">
-          <img
-            src="https://via.placeholder.com/300x200"
-            alt="Task Management"
-            class="w-100 project-img"
-            style="height: 200px; object-fit: cover"
-          />
-          <div
-            class="position-absolute top-0 end-0 bg-success text-white px-2 py-1 m-2 rounded"
-          >
-            New
-          </div>
-        </div>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">
-            <i class="fas fa-tasks text-success me-2"></i>Task Management App
-          </h5>
-          <p class="card-text flex-grow-1">
-            Collaborative productivity tool with real-time updates and progress
-            tracking.
-          </p>
-          <div class="mb-3">
-            <span class="badge bg-warning me-1">Node.js</span>
-            <span class="badge bg-danger me-1">MongoDB</span>
-            <span class="badge bg-primary">Vue.js</span>
-          </div>
-          <div class="d-flex justify-content-between mt-auto">
-            <a href="#" class="btn btn-success btn-sm"
-              ><i class="fas fa-external-link-alt me-1"></i>Live Demo</a
-            >
-            <a href="#" class="btn btn-outline-secondary btn-sm"
-              ><i class="fab fa-github me-1"></i>Code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 bg-white">
-        <div class="card-img-top position-relative overflow-hidden">
-          <img
-            src="https://via.placeholder.com/300x200"
-            alt="Weather Dashboard"
-            class="w-100 project-img"
-            style="height: 200px; object-fit: cover"
-          />
-          <div
-            class="position-absolute top-0 end-0 bg-info text-white px-2 py-1 m-2 rounded"
-          >
-            Popular
-          </div>
-        </div>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">
-            <i class="fas fa-cloud-sun text-info me-2"></i>Weather Dashboard
-          </h5>
-          <p class="card-text flex-grow-1">
-            Interactive weather app with forecasts, historical data, and
-            beautiful visualisations.
-          </p>
-          <div class="mb-3">
-            <span class="badge bg-primary me-1">Python</span>
-            <span class="badge bg-warning me-1">Flask</span>
-            <span class="badge bg-success">Chart.js</span>
-          </div>
-          <div class="d-flex justify-content-between mt-auto">
-            <a href="#" class="btn btn-info btn-sm"
-              ><i class="fas fa-external-link-alt me-1"></i>Live Demo</a
-            >
-            <a href="#" class="btn btn-outline-secondary btn-sm"
-              ><i class="fab fa-github me-1"></i>Code</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-  </div>
-
-  <!-- Technical Skills -->
-  <h2 class="text-center fw-bold mb-5 text-white">Technical Skills</h2>
-  <div class="row mb-5">
-    <!-- Frontend -->
-    <div class="col-md-4 mb-4">
-      <div class="card bg-white h-100">
-        <div class="card-body">
-          <h5 class="card-title text-center">
-            <i class="fas fa-code text-primary"></i> Frontend
-          </h5>
-          {% if frontend_skills %} {% for skill in frontend_skills %}
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span>{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>
-                {% endif %}{{ skill.name }}</span>
-              <span>{{ skill.proficiency }}%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width:{{ skill.proficiency }}%"
-                aria-valuenow="{{ skill.proficiency }}"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          {% endfor %} 
-
-          <!-- Static fallback -->
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span><i class="fab fa-html5 text-danger me-1"></i>HTML/CSS</span
-              ><span>95%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 95%"
-                role="progressbar"
-                aria-valuenow="95"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span
-                ><i class="fab fa-js-square text-warning me-1"></i
-                >JavaScript</span
-              ><span>90%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 90%"
-                role="progressbar"
-                aria-valuenow="90"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span><i class="fab fa-react text-info me-1"></i>React</span
-              ><span>85%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 85%"
-                role="progressbar"
-                aria-valuenow="85"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <!-- Backend -->
-    <div class="col-md-4 mb-4">
-      <div class="card bg-white h-100">
-        <div class="card-body">
-          <h5 class="card-title text-center">
-            <i class="fas fa-server text-success"></i> Backend
-          </h5>
-          {% if backend_skills %} {% for skill in backend_skills %}
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span
-                >{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>
-                {% endif %}{{ skill.name }}</span
-              >
-              <span>{{ skill.proficiency }}%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width:{{ skill.proficiency }}%"
-                aria-valuenow="{{ skill.proficiency }}"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          {% endfor %} {% else %}
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span><i class="fab fa-python text-warning me-1"></i>Python</span
-              ><span>90%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 90%"
-                role="progressbar"
-                aria-valuenow="90"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span><i class="fas fa-leaf text-success me-1"></i>Django</span
-              ><span>95%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 95%"
-                role="progressbar"
-                aria-valuenow="95"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span
-                ><i class="fab fa-node-js text-success me-1"></i>Node.js</span
-              ><span>80%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 80%"
-                role="progressbar"
-                aria-valuenow="80"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <!-- Tools -->
-    <div class="col-md-4 mb-4">
-      <div class="card bg-white h-100">
-        <div class="card-body">
-          <h5 class="card-title text-center">
-            <i class="fas fa-database text-info"></i> Database & Tools
-          </h5>
-          {% if tool_skills %} {% for skill in tool_skills %}
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span
-                >{% if skill.icon %}<i class="{{ skill.icon }} me-1"></i>
-                {% endif %}{{ skill.name }}</span
-              >
-              <span>{{ skill.proficiency }}%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width:{{ skill.proficiency }}%"
-                aria-valuenow="{{ skill.proficiency }}"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          {% endfor %} {% else %}
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span
-                ><i class="fas fa-database text-primary me-1"></i
-                >PostgreSQL</span
-              ><span>85%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 85%"
-                role="progressbar"
-                aria-valuenow="85"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span><i class="fas fa-leaf text-success me-1"></i>MongoDB</span
-              ><span>75%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 75%"
-                role="progressbar"
-                aria-valuenow="75"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span><i class="fab fa-git-alt text-danger me-1"></i>Git</span
-              ><span>95%</span>
-            </div>
-            <div class="progress">
-              <div
-                class="progress-bar"
-                style="width: 95%"
-                role="progressbar"
-                aria-valuenow="95"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Testimonials -->
-  <section class="testimonials-section py-5 mb-5">
-    <h2 class="text-center fw-bold mb-5 text-white">What Clients Say</h2>
-    {% if testimonials %}
-    <div class="row">
-      {% for testimonial in testimonials %}
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 bg-white text-center p-4">
-          <div class="mb-3">
-            <i class="fas fa-quote-left fa-2x text-primary"></i>
-          </div>
-          <p class="card-text fst-italic">"{{ testimonial.quote }}"</p>
-          <div class="d-flex align-items-center justify-content-center mt-3">
-            {% if testimonial.image %}
-            <img
-              src="{{ testimonial.image.url }}"
-              alt="{{ testimonial.name }}"
-              class="rounded-circle me-3"
-              style="width: 50px; height: 50px; object-fit: cover"
-            />
-            {% else %}
-            <div
-              class="rounded-circle me-3 bg-primary d-flex align-items-center justify-content-center text-white fw-bold"
-              style="width: 50px; height: 50px; flex-shrink: 0"
-            >
-              {{ testimonial.name|first|upper }}
-            </div>
-            {% endif %}
-            <div class="text-start">
-              <h6 class="mb-0">{{ testimonial.name }}</h6>
-              <small class="text-muted"
-                >{{ testimonial.position }}, {{ testimonial.company }}</small
-              >
-            </div>
-          </div>
-          <div class="mt-3">
-            {% for i in "12345"|make_list %} {% if forloop.counter <= testimonial.rating %}
-            <i class="fas fa-star text-warning"></i>
-            {% else %}
-            <i class="far fa-star text-warning"></i>
-            {% endif %} {% endfor %}
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    {% else %}
-    <div class="text-center text-white">
-      <p>No testimonials yet.</p>
-    </div>
-    {% endif %}
   </section>
 
-  <!-- Contact CTA -->
-  <div class="container py-5" id="contact">
-    <h2 class="text-center display-5 fw-bold mb-5 text-white">
-      Let's Work Together
-    </h2>
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center">
-        <div class="card bg-white">
-          <div class="card-body p-5">
-            <i class="fas fa-handshake fa-4x text-primary mb-4"></i>
-            <h4 class="mb-3">Ready to start your next project?</h4>
-            <p class="text-muted mb-4">
-              I'm always open to discussing new projects, creative ideas or
-              opportunities to be part of your vision.
+  <!-- ── Stats ─────────────────────────────────────────────────── -->
+  <section style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);border-radius:var(--radius);overflow:hidden;margin-bottom:4rem" class="reveal">
+    {% for stat in "1234"|make_list %}
+    <div style="background:var(--ink-2);padding:1.5rem;text-align:center">
+      {% if forloop.counter == 1 %}
+      <div style="font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--teal)">50+</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem">Projects Done</div>
+      {% elif forloop.counter == 2 %}
+      <div style="font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--teal)">3+</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem">Years Coding</div>
+      {% elif forloop.counter == 3 %}
+      <div style="font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--amber)">100%</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem">Client Satisfaction</div>
+      {% else %}
+      <div style="font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--amber)">24/7</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem">Available</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+
+  <!-- ── Featured Projects ──────────────────────────────────────── -->
+  <section style="margin-bottom:4rem">
+    <p class="section-label">Selected Work</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem">
+      <h2 class="section-title" style="margin-bottom:0">Featured Projects</h2>
+      <a href="{% url 'projects' %}" class="btn-ghost" style="white-space:nowrap">All Projects <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem">
+      {% if featured_projects %}
+        {% for project in featured_projects %}
+        <article class="card reveal">
+          <div style="position:relative;overflow:hidden;height:180px">
+            {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s var(--ease)">
+            {% else %}
+            <div style="width:100%;height:100%;background:var(--ink-3);display:flex;align-items:center;justify-content:center">
+              <i class="fas fa-code" style="font-size:2rem;color:var(--muted)"></i>
+            </div>
+            {% endif %}
+            <span style="position:absolute;top:0.75rem;right:0.75rem;font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:20px;
+              {% if project.status == 'completed' %}background:rgba(0,201,167,0.2);color:var(--teal);border:1px solid rgba(0,201,167,0.3)
+              {% elif project.status == 'in_progress' %}background:rgba(245,158,11,0.2);color:var(--amber);border:1px solid rgba(245,158,11,0.3)
+              {% else %}background:rgba(139,92,246,0.2);color:#a78bfa;border:1px solid rgba(139,92,246,0.3){% endif %}">
+              {{ project.get_status_display }}
+            </span>
+          </div>
+          <div style="padding:1.25rem">
+            <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem">{{ project.title }}</h3>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem">{{ project.description|truncatechars:100 }}</p>
+            <div style="margin-bottom:1rem">
+              {% for tech in project.get_technologies_list %}<span class="badge-tech">{{ tech }}</span>{% endfor %}
+            </div>
+            <div style="display:flex;gap:0.5rem">
+              {% if project.url %}
+              <a href="{{ project.url }}" target="_blank" rel="noopener" class="btn-teal" style="flex:1;justify-content:center;font-size:0.8rem;padding:0.5rem 0.8rem">
+                <i class="fas fa-external-link-alt"></i>Demo
+              </a>
+              {% endif %}
+              {% if project.github_url %}
+              <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn-ghost" style="flex:1;justify-content:center;font-size:0.8rem;padding:0.5rem 0.8rem">
+                <i class="fab fa-github"></i>Code
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      {% else %}
+        <!-- Static fallbacks -->
+        {% for item in "123"|make_list %}
+        <article class="card reveal">
+          <div style="height:180px;background:var(--ink-3);display:flex;align-items:center;justify-content:center">
+            <i class="fas fa-{% if forloop.counter == 1 %}shopping-bag{% elif forloop.counter == 2 %}tasks{% else %}cloud-sun{% endif %}" style="font-size:2rem;color:var(--muted)"></i>
+          </div>
+          <div style="padding:1.25rem">
+            <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem">
+              {% if forloop.counter == 1 %}Irehcag Beauty{% elif forloop.counter == 2 %}Task Manager{% else %}Weather Dashboard{% endif %}
+            </h3>
+            <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:1rem">
+              {% if forloop.counter == 1 %}Online store for hair & beauty products — easy, affordable shopping.
+              {% elif forloop.counter == 2 %}Collaborative productivity tool with real-time updates.
+              {% else %}Interactive weather app with forecasts and beautiful visualisations.{% endif %}
             </p>
-            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg me-3">
-              <i class="fas fa-paper-plane me-2"></i>Send a Message
-            </a>
-            <a
-              href="mailto:gacherigatobu@gmail.com"
-              class="btn btn-outline-secondary btn-lg"
-            >
-              <i class="fas fa-envelope me-2"></i>Email Directly
-            </a>
+            <div style="margin-bottom:1rem">
+              {% if forloop.counter == 1 %}
+              <span class="badge-tech">Django</span><span class="badge-tech">Python</span><span class="badge-tech">SQL</span>
+              {% elif forloop.counter == 2 %}
+              <span class="badge-tech">Node.js</span><span class="badge-tech">Vue.js</span><span class="badge-tech">MongoDB</span>
+              {% else %}
+              <span class="badge-tech">Python</span><span class="badge-tech">Flask</span><span class="badge-tech">Chart.js</span>
+              {% endif %}
+            </div>
+            <div style="display:flex;gap:0.5rem">
+              <a href="#" class="btn-teal" style="flex:1;justify-content:center;font-size:0.8rem;padding:0.5rem 0.8rem"><i class="fas fa-external-link-alt"></i>Demo</a>
+              <a href="#" class="btn-ghost" style="flex:1;justify-content:center;font-size:0.8rem;padding:0.5rem 0.8rem"><i class="fab fa-github"></i>Code</a>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Skills ─────────────────────────────────────────────────── -->
+  <section style="margin-bottom:4rem">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Technical Skills</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem">
+
+      <!-- Frontend -->
+      <div class="card reveal" style="padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem">
+          <div style="width:36px;height:36px;border-radius:8px;background:var(--teal-dim);display:flex;align-items:center;justify-content:center;color:var(--teal)"><i class="fas fa-code"></i></div>
+          <h3 style="font-family:var(--font-head);font-weight:700;font-size:0.95rem">Frontend</h3>
+        </div>
+        {% if frontend_skills %}
+          {% for skill in frontend_skills %}
+          <div style="margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem">
+              <span style="font-size:0.82rem;color:var(--soft)">{% if skill.icon %}<i class="{{ skill.icon }}" style="margin-right:0.35rem"></i>{% endif %}{{ skill.name }}</span>
+              <span style="font-size:0.78rem;color:var(--muted)">{{ skill.proficiency }}%</span>
+            </div>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:0" data-width="{{ skill.proficiency }}%"></div></div>
+          </div>
+          {% endfor %}
+        {% else %}
+          {% for item in "123"|make_list %}
+          <div style="margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem">
+              <span style="font-size:0.82rem;color:var(--soft)">{% if forloop.counter == 1 %}<i class="fab fa-html5" style="color:#e34f26;margin-right:0.35rem"></i>HTML/CSS{% elif forloop.counter == 2 %}<i class="fab fa-js-square" style="color:#f7df1e;margin-right:0.35rem"></i>JavaScript{% else %}<i class="fab fa-react" style="color:#61dafb;margin-right:0.35rem"></i>React{% endif %}</span>
+              <span style="font-size:0.78rem;color:var(--muted)">{% if forloop.counter == 1 %}95{% elif forloop.counter == 2 %}90{% else %}85{% endif %}%</span>
+            </div>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:0" data-width="{% if forloop.counter == 1 %}95{% elif forloop.counter == 2 %}90{% else %}85{% endif %}%"></div></div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <!-- Backend -->
+      <div class="card reveal" style="padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem">
+          <div style="width:36px;height:36px;border-radius:8px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;color:var(--amber)"><i class="fas fa-server"></i></div>
+          <h3 style="font-family:var(--font-head);font-weight:700;font-size:0.95rem">Backend</h3>
+        </div>
+        {% if backend_skills %}
+          {% for skill in backend_skills %}
+          <div style="margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem">
+              <span style="font-size:0.82rem;color:var(--soft)">{% if skill.icon %}<i class="{{ skill.icon }}" style="margin-right:0.35rem"></i>{% endif %}{{ skill.name }}</span>
+              <span style="font-size:0.78rem;color:var(--muted)">{{ skill.proficiency }}%</span>
+            </div>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:0" data-width="{{ skill.proficiency }}%"></div></div>
+          </div>
+          {% endfor %}
+        {% else %}
+          {% for item in "123"|make_list %}
+          <div style="margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem">
+              <span style="font-size:0.82rem;color:var(--soft)">{% if forloop.counter == 1 %}<i class="fab fa-python" style="color:#3776ab;margin-right:0.35rem"></i>Python{% elif forloop.counter == 2 %}<i class="fas fa-leaf" style="color:#0c4b33;margin-right:0.35rem"></i>Django{% else %}<i class="fab fa-node-js" style="color:#339933;margin-right:0.35rem"></i>Node.js{% endif %}</span>
+              <span style="font-size:0.78rem;color:var(--muted)">{% if forloop.counter == 1 %}90{% elif forloop.counter == 2 %}95{% else %}80{% endif %}%</span>
+            </div>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:0" data-width="{% if forloop.counter == 1 %}90{% elif forloop.counter == 2 %}95{% else %}80{% endif %}%"></div></div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <!-- Tools -->
+      <div class="card reveal" style="padding:1.5rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem">
+          <div style="width:36px;height:36px;border-radius:8px;background:rgba(139,92,246,0.12);display:flex;align-items:center;justify-content:center;color:#a78bfa"><i class="fas fa-tools"></i></div>
+          <h3 style="font-family:var(--font-head);font-weight:700;font-size:0.95rem">Tools & Databases</h3>
+        </div>
+        {% if tool_skills %}
+          {% for skill in tool_skills %}
+          <div style="margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem">
+              <span style="font-size:0.82rem;color:var(--soft)">{% if skill.icon %}<i class="{{ skill.icon }}" style="margin-right:0.35rem"></i>{% endif %}{{ skill.name }}</span>
+              <span style="font-size:0.78rem;color:var(--muted)">{{ skill.proficiency }}%</span>
+            </div>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:0" data-width="{{ skill.proficiency }}%"></div></div>
+          </div>
+          {% endfor %}
+        {% else %}
+          {% for item in "123"|make_list %}
+          <div style="margin-bottom:1rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.4rem">
+              <span style="font-size:0.82rem;color:var(--soft)">{% if forloop.counter == 1 %}<i class="fas fa-database" style="color:#336791;margin-right:0.35rem"></i>PostgreSQL{% elif forloop.counter == 2 %}<i class="fas fa-leaf" style="color:#47a248;margin-right:0.35rem"></i>MongoDB{% else %}<i class="fab fa-git-alt" style="color:#f05032;margin-right:0.35rem"></i>Git{% endif %}</span>
+              <span style="font-size:0.78rem;color:var(--muted)">{% if forloop.counter == 1 %}85{% elif forloop.counter == 2 %}75{% else %}95{% endif %}%</span>
+            </div>
+            <div class="skill-bar-wrap"><div class="skill-bar" style="width:0" data-width="{% if forloop.counter == 1 %}85{% elif forloop.counter == 2 %}75{% else %}95{% endif %}%"></div></div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Testimonials ───────────────────────────────────────────── -->
+  {% if testimonials %}
+  <section style="margin-bottom:4rem">
+    <p class="section-label">Kind Words</p>
+    <h2 class="section-title">What Clients Say</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem">
+      {% for t in testimonials %}
+      <article class="card reveal" style="padding:1.5rem">
+        <i class="fas fa-quote-left" style="color:var(--teal);font-size:1.2rem;margin-bottom:0.75rem;display:block;opacity:0.6"></i>
+        <p style="font-size:0.88rem;color:var(--soft);line-height:1.7;margin-bottom:1.25rem;font-style:italic">"{{ t.quote }}"</p>
+        <div style="display:flex;align-items:center;gap:0.75rem">
+          {% if t.image %}
+          <img src="{{ t.image.url }}" alt="{{ t.name }}" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+          {% else %}
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--teal-dim);color:var(--teal);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;font-size:1rem;flex-shrink:0">{{ t.name|first|upper }}</div>
+          {% endif %}
+          <div>
+            <div style="font-size:0.85rem;font-weight:600;color:var(--white)">{{ t.name }}</div>
+            <div style="font-size:0.75rem;color:var(--muted)">{{ t.position }}, {{ t.company }}</div>
+          </div>
+          <div style="margin-left:auto">
+            {% for i in "12345"|make_list %}
+            <i class="{% if forloop.counter <= t.rating %}fas{% else %}far{% endif %} fa-star" style="color:var(--amber);font-size:0.7rem"></i>
+            {% endfor %}
           </div>
         </div>
-      </div>
+      </article>
+      {% endfor %}
     </div>
-  </div>
+  </section>
+  {% endif %}
+
+  <!-- ── CTA ───────────────────────────────────────────────────── -->
+  <section class="card reveal" style="padding:3rem;text-align:center;background:linear-gradient(135deg,rgba(0,201,167,0.08),rgba(245,158,11,0.08));border-color:rgba(0,201,167,0.15);margin-bottom:2rem">
+    <p class="section-label">Open to opportunities</p>
+    <h2 style="font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem">Let's Build Something Together</h2>
+    <p style="color:var(--muted);font-size:0.92rem;max-width:480px;margin:0 auto 2rem;line-height:1.7">I'm always open to new projects, collaborations, and creative ideas. Don't hesitate to reach out.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="{% url 'contact' %}" class="btn-teal"><i class="fas fa-paper-plane"></i>Send a Message</a>
+      <a href="mailto:gacherigatobu@gmail.com" class="btn-ghost"><i class="fas fa-envelope"></i>Email Directly</a>
+    </div>
+  </section>
+
 </div>
-{% endblock %} {% block extra_js %}
-<script src="{% static 'js/main.js' %}" defer></script>
+
+<style>
+  @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
+  @media (max-width:600px) {
+    section:first-child { grid-template-columns:1fr!important; text-align:center; }
+    section:first-child > div:last-child { order:-1; }
+    section:first-child .btn-teal, section:first-child .btn-ghost { justify-content:center; width:100%; }
+  }
+</style>
 {% endblock %}

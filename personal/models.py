@@ -3,6 +3,12 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Project(models.Model):
+    STATUS_CHOICES = [
+        ('completed', 'Completed'),
+        ('in_progress', 'In Progress'),
+        ('featured', 'Featured'),
+    ]
+
     title = models.CharField(max_length=200)
     description = models.TextField()
     image = models.ImageField(upload_to='projects/', blank=True, null=True)
@@ -11,15 +17,7 @@ class Project(models.Model):
     technologies = models.CharField(max_length=300, help_text="Comma-separated list, e.g. Django,React,PostgreSQL")
     created_at = models.DateTimeField(auto_now_add=True)
     featured = models.BooleanField(default=False)
-    status = models.CharField(
-        max_length=20,
-        choices=[
-            ('completed', 'Completed'),
-            ('in_progress', 'In Progress'),
-            ('featured', 'Featured'),
-        ],
-        default='completed',
-    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='completed')
 
     class Meta:
         ordering = ['-featured', '-created_at']
@@ -28,7 +26,6 @@ class Project(models.Model):
         return self.title
 
     def get_technologies_list(self):
-        """Return technologies as a Python list."""
         return [t.strip() for t in self.technologies.split(',') if t.strip()]
 
 
@@ -73,6 +70,12 @@ class About(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.pk and About.objects.exists():
+            existing = About.objects.first()
+            self.pk = existing.pk
+        super().save(*args, **kwargs)
 
 
 class Contact(models.Model):
